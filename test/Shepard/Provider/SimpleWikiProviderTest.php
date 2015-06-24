@@ -8,7 +8,10 @@ class SimpleWikiProviderTest extends \PHPUnit_Framework_TestCase
     {
         $provider = new SimpleWikiProvider();
 
-        $text = $provider->readFile('..\Doc\Kent_Beck.html');
-        $this->assertTrue(true);
+        $text = false;
+        $text = $provider->readFile('../../../src/Shepard/Doc/Kent_Beck.html');
+
+        $this->assertTrue(is_string($text));
+        $this->assertEquals(3991, strlen($text));
     }
 }
