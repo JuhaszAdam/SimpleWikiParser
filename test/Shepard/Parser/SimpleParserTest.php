@@ -13,7 +13,10 @@ class SimpleParserTest extends \PHPUnit_Framework_TestCase
 
         $person = $parser->parse($this->mockProvider()->readFile('...'));
 
-        $this->assertInstanceOf($person, SimplePerson::class);
+        $this->assertInstanceOf(SimplePerson::class, $person);
+        $this->assertNotEmpty($person->getName());
+        $this->assertNotEmpty($person->getBornIn());
+        $this->assertNotEmpty($person->getDescription());
     }
 
     /**
