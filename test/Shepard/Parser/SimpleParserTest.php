@@ -3,7 +3,7 @@
 namespace Shepard\Parser;
 
 use Shepard\Entity\SimplePerson;
-use Shepard\Provider\SimpleWikiProvider;
+use Shepard\Manager\SimpleManager;
 
 class SimpleParserTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,7 @@ class SimpleParserTest extends \PHPUnit_Framework_TestCase
     {
         $parser = new SimpleParser();
 
-        $person = $parser->parse($this->mockProvider()->readFile('...'));
+        $person = $parser->parse($this->mockManager()->readFile('...'));
 
         $this->assertInstanceOf(SimplePerson::class, $person);
         $this->assertNotEmpty($person->getName());
@@ -22,9 +22,9 @@ class SimpleParserTest extends \PHPUnit_Framework_TestCase
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject
      */
-    public function mockProvider()
+    public function mockManager()
     {
-        $job = $this->getMockBuilder(SimpleWikiProvider::class)->getMock();
+        $job = $this->getMockBuilder(SimpleManager::class)->getMock();
         $timezone = new \DateTimeZone("Europe/Budapest");
         $job->expects($this->any())
             ->method('readFile')
@@ -103,4 +103,3 @@ class SimpleParserTest extends \PHPUnit_Framework_TestCase
         return $job;
     }
 }
-

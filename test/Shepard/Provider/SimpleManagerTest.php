@@ -1,12 +1,12 @@
 <?php
 
-namespace Shepard\Provider;
+namespace Shepard\Manager;
 
-class SimpleWikiProviderTest extends \PHPUnit_Framework_TestCase
+class SimpleManagerTest extends \PHPUnit_Framework_TestCase
 {
     public function testReadFile()
     {
-        $provider = new SimpleWikiProvider();
+        $provider = new SimpleManager();
 
         $text = false;
         $text = $provider->readFile('../../../src/Shepard/Doc/Kent_Beck.html');

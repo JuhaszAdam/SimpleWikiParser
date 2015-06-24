@@ -1,8 +1,8 @@
 <?php
 
-namespace Shepard\Provider;
+namespace Shepard\Manager;
 
-class SimpleWikiProvider
+class SimpleManager
 {
     /**
      * @param string $filepath
@@ -19,5 +19,14 @@ class SimpleWikiProvider
         fclose($file);
 
         return $text;
+    }
+
+    /**
+     * @param string $filepath
+     * @param string $text
+     */
+    public function saveText($filepath, $text)
+    {
+        file_put_contents($filepath, $text);
     }
 }
